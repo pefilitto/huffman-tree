@@ -69,18 +69,16 @@ void InsereCodigoByteByte(char codigo[], FILE *ptr){
         
         Un.num = 0;
 
-        Un.bi.b7 = cod[i++] - '0';
-        Un.bi.b6 = cod[i++] - '0';
-        Un.bi.b5 = cod[i++] - '0';
-        Un.bi.b4 = cod[i++] - '0';
-        Un.bi.b3 = cod[i++] - '0';
-        Un.bi.b2 = cod[i++] - '0';
-        Un.bi.b1 = cod[i++] - '0';
-        Un.bi.b0 = cod[i++] - '0';
+        Un.bi.b7 = cod[i++];
+        Un.bi.b6 = cod[i++];
+        Un.bi.b5 = cod[i++];
+        Un.bi.b4 = cod[i++];
+        Un.bi.b3 = cod[i++];
+        Un.bi.b2 = cod[i++];
+        Un.bi.b1 = cod[i++];
+        Un.bi.b0 = cod[i++];
 
-        fprintf(ptr, "%d%d%d%d%d%d%d%d",
-            Un.bi.b7, Un.bi.b6, Un.bi.b5, Un.bi.b4,
-            Un.bi.b3, Un.bi.b2, Un.bi.b1, Un.bi.b0);
+        fwrite(&Un.num, sizeof(Un), 1, ptr);
     }
 }
 
@@ -96,7 +94,7 @@ void BuscaInsereCodigo(Lista * L, char palavra[], char codigo[], FILE *ptr){
 }
 
 void PercorreSegundaFrase(Lista *L, FILE *arquivo) {
-    FILE *ptr = fopen("textoCodificado.txt", "w");
+    FILE *ptr = fopen("textoCodificado.dat", "wb");
     char c[2], string[50], codigo[50];
     c[1] = '\0';
     string[0] = '\0';
